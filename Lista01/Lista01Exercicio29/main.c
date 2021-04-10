@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
+//EM DESENVOLVIMENTO!!
 int main (void){
   //Definindo idioma:
   setlocale(LC_ALL, "portuguese");
