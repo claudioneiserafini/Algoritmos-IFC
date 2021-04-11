@@ -1,19 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
+#define TAM 5
 
-//EM DESENVOLVIMENTO!!
 int main (void){
   //Definindo idioma:
   setlocale(LC_ALL, "portuguese");
 
   //Defenindo variaveis:
-  char cidade_1[50], cidade_2[50], cidade_3[50], cidade_4[50], cidade_5[50];
-  float temp_1, temp_2, temp_3, temp_4, temp_5, media;
+  float media;
+
+  //Definindo struct: 
+  struct temperatura_media{ //tipo de dado.
+  char nome[60];
+  float temperatura;
+  }municipio[TAM]; //nome
 
   //Entrada:
+  for(int i = 0; i < TAM; i++){
+  printf("\nInforme o nome do %d° município: ", i+1);
+  fgets(municipio[i].nome, 60, stdin);
+  municipio[i].nome[strcspn(municipio[i].nome, "\n")] = '\0'; //Remove [spacebar] do fgets.
+  
+  printf("Informe a temperatura média de %s: ", municipio[i].nome);
+  scanf("%f", &municipio[i].temperatura);
+  getchar();
+  }
+
+  //Calculando temperatura media região:
+  for(int i = 0; i < TAM; i++){
+  media = media + municipio[i].temperatura;
+  }
+  
+  media = media / TAM;
 
   //Saida:
+  printf("\n"
+  "|============================================|\n"
+  "|  A temperatura media da região é: %.2f°C  |\n"
+  "|============================================|", media);
+return 0; 
 
-  return 0; 
 }
